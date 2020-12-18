@@ -15,7 +15,7 @@ reserved = {
 # NAME: variable name, L/RPAREN: Left/Right Parenthesis
 tokens = [
     'NAME', 'NUMBER',
-    'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'MODULO', 'EQUALS',
+    'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'MODULO', 'EQUALS', 'POWER', 'SQUARE',
     'LPAREN', 'RPAREN',
     'EQUAL', 'NOTEQ', 'LARGE', 'SMALL', 'LRGEQ', 'SMLEQ',
 ] + list(reserved.values())
@@ -27,6 +27,8 @@ t_MINUS   = r'-'
 t_TIMES   = r'\*'
 t_DIVIDE  = r'/'
 t_MODULO  = r'%'
+t_POWER   = r'\^'
+t_SQUARE  = r'\*\*'
 t_EQUALS  = r'='
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
@@ -179,7 +181,9 @@ def p_expression_binop(p):
                           | expression MINUS expression
                           | expression TIMES expression
                           | expression DIVIDE expression
-                          | expression MODULO expression'''
+                          | expression MODULO expression
+                          | expression POWER  expression
+                          | expression SQUARE expression'''
     if p[2] == '+':
         p[0] = p[1] + p[3]
     elif p[2] == '-':
@@ -190,6 +194,10 @@ def p_expression_binop(p):
         p[0] = p[1] / p[3]
     elif p[2] == '%':
         p[0] = p[1] % p[3]
+    elif p[2] == '^':
+        p[0] = p[1] ** p[3]
+    elif p[2] == '**':
+        p[0] = p[1] ** (1/p[3])
 
 
 # unary minus operator expression: <expression> -> - <expression>
