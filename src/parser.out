@@ -1,0 +1,1027 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> IF LPAREN comparison RPAREN NAME EQUALS expression
+Rule 2     statement -> IF LPAREN comparison RPAREN NAME EQUALS expression ELSE NAME EQUALS expression
+Rule 3     statement -> FOR NAME EQUALS NUMBER TO NUMBER PLUS
+Rule 4     statement -> FOR NAME EQUALS NUMBER TO NUMBER TIMES
+Rule 5     statement -> NAME EQUALS expression
+Rule 6     statement -> expression
+Rule 7     comparison -> expression EQUAL expression
+Rule 8     comparison -> expression NOTEQ expression
+Rule 9     comparison -> expression LARGE expression
+Rule 10    comparison -> expression SMALL expression
+Rule 11    comparison -> expression LRGEQ expression
+Rule 12    comparison -> expression SMLEQ expression
+Rule 13    expression -> expression PLUS expression
+Rule 14    expression -> expression MINUS expression
+Rule 15    expression -> expression TIMES expression
+Rule 16    expression -> expression DIVIDE expression
+Rule 17    expression -> expression MODULO expression
+Rule 18    expression -> MINUS expression
+Rule 19    expression -> LPAREN expression RPAREN
+Rule 20    expression -> NUMBER
+Rule 21    expression -> NAME
+
+Terminals, with rules where they appear
+
+DIVIDE               : 16
+ELSE                 : 2
+EQUAL                : 7
+EQUALS               : 1 2 2 3 4 5
+FOR                  : 3 4
+IF                   : 1 2
+LARGE                : 9
+LPAREN               : 1 2 19
+LRGEQ                : 11
+MINUS                : 14 18
+MODULO               : 17
+NAME                 : 1 2 2 3 4 5 21
+NOTEQ                : 8
+NUMBER               : 3 3 4 4 20
+PLUS                 : 3 13
+RPAREN               : 1 2 19
+SMALL                : 10
+SMLEQ                : 12
+TIMES                : 4 15
+TO                   : 3 4
+error                : 
+
+Nonterminals, with rules where they appear
+
+comparison           : 1 2
+expression           : 1 2 2 5 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 19
+statement            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . IF LPAREN comparison RPAREN NAME EQUALS expression
+    (2) statement -> . IF LPAREN comparison RPAREN NAME EQUALS expression ELSE NAME EQUALS expression
+    (3) statement -> . FOR NAME EQUALS NUMBER TO NUMBER PLUS
+    (4) statement -> . FOR NAME EQUALS NUMBER TO NUMBER TIMES
+    (5) statement -> . NAME EQUALS expression
+    (6) statement -> . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    IF              shift and go to state 2
+    FOR             shift and go to state 6
+    NAME            shift and go to state 4
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+
+    statement                      shift and go to state 1
+    expression                     shift and go to state 5
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> IF . LPAREN comparison RPAREN NAME EQUALS expression
+    (2) statement -> IF . LPAREN comparison RPAREN NAME EQUALS expression ELSE NAME EQUALS expression
+
+    LPAREN          shift and go to state 9
+
+
+state 3
+
+    (19) expression -> LPAREN . expression RPAREN
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 10
+
+state 4
+
+    (5) statement -> NAME . EQUALS expression
+    (21) expression -> NAME .
+
+    EQUALS          shift and go to state 12
+    PLUS            reduce using rule 21 (expression -> NAME .)
+    MINUS           reduce using rule 21 (expression -> NAME .)
+    TIMES           reduce using rule 21 (expression -> NAME .)
+    DIVIDE          reduce using rule 21 (expression -> NAME .)
+    MODULO          reduce using rule 21 (expression -> NAME .)
+    $end            reduce using rule 21 (expression -> NAME .)
+
+
+state 5
+
+    (6) statement -> expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    $end            reduce using rule 6 (statement -> expression .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+
+state 6
+
+    (3) statement -> FOR . NAME EQUALS NUMBER TO NUMBER PLUS
+    (4) statement -> FOR . NAME EQUALS NUMBER TO NUMBER TIMES
+
+    NAME            shift and go to state 18
+
+
+state 7
+
+    (20) expression -> NUMBER .
+
+    PLUS            reduce using rule 20 (expression -> NUMBER .)
+    MINUS           reduce using rule 20 (expression -> NUMBER .)
+    TIMES           reduce using rule 20 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 20 (expression -> NUMBER .)
+    MODULO          reduce using rule 20 (expression -> NUMBER .)
+    $end            reduce using rule 20 (expression -> NUMBER .)
+    RPAREN          reduce using rule 20 (expression -> NUMBER .)
+    EQUAL           reduce using rule 20 (expression -> NUMBER .)
+    NOTEQ           reduce using rule 20 (expression -> NUMBER .)
+    LARGE           reduce using rule 20 (expression -> NUMBER .)
+    SMALL           reduce using rule 20 (expression -> NUMBER .)
+    LRGEQ           reduce using rule 20 (expression -> NUMBER .)
+    SMLEQ           reduce using rule 20 (expression -> NUMBER .)
+    ELSE            reduce using rule 20 (expression -> NUMBER .)
+
+
+state 8
+
+    (18) expression -> MINUS . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 19
+
+state 9
+
+    (1) statement -> IF LPAREN . comparison RPAREN NAME EQUALS expression
+    (2) statement -> IF LPAREN . comparison RPAREN NAME EQUALS expression ELSE NAME EQUALS expression
+    (7) comparison -> . expression EQUAL expression
+    (8) comparison -> . expression NOTEQ expression
+    (9) comparison -> . expression LARGE expression
+    (10) comparison -> . expression SMALL expression
+    (11) comparison -> . expression LRGEQ expression
+    (12) comparison -> . expression SMLEQ expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    comparison                     shift and go to state 20
+    expression                     shift and go to state 21
+
+state 10
+
+    (19) expression -> LPAREN expression . RPAREN
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    RPAREN          shift and go to state 22
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+
+state 11
+
+    (21) expression -> NAME .
+
+    RPAREN          reduce using rule 21 (expression -> NAME .)
+    PLUS            reduce using rule 21 (expression -> NAME .)
+    MINUS           reduce using rule 21 (expression -> NAME .)
+    TIMES           reduce using rule 21 (expression -> NAME .)
+    DIVIDE          reduce using rule 21 (expression -> NAME .)
+    MODULO          reduce using rule 21 (expression -> NAME .)
+    $end            reduce using rule 21 (expression -> NAME .)
+    EQUAL           reduce using rule 21 (expression -> NAME .)
+    NOTEQ           reduce using rule 21 (expression -> NAME .)
+    LARGE           reduce using rule 21 (expression -> NAME .)
+    SMALL           reduce using rule 21 (expression -> NAME .)
+    LRGEQ           reduce using rule 21 (expression -> NAME .)
+    SMLEQ           reduce using rule 21 (expression -> NAME .)
+    ELSE            reduce using rule 21 (expression -> NAME .)
+
+
+state 12
+
+    (5) statement -> NAME EQUALS . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 23
+
+state 13
+
+    (13) expression -> expression PLUS . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 24
+
+state 14
+
+    (14) expression -> expression MINUS . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 25
+
+state 15
+
+    (15) expression -> expression TIMES . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 26
+
+state 16
+
+    (16) expression -> expression DIVIDE . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 27
+
+state 17
+
+    (17) expression -> expression MODULO . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 28
+
+state 18
+
+    (3) statement -> FOR NAME . EQUALS NUMBER TO NUMBER PLUS
+    (4) statement -> FOR NAME . EQUALS NUMBER TO NUMBER TIMES
+
+    EQUALS          shift and go to state 29
+
+
+state 19
+
+    (18) expression -> MINUS expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    PLUS            reduce using rule 18 (expression -> MINUS expression .)
+    MINUS           reduce using rule 18 (expression -> MINUS expression .)
+    TIMES           reduce using rule 18 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 18 (expression -> MINUS expression .)
+    MODULO          reduce using rule 18 (expression -> MINUS expression .)
+    $end            reduce using rule 18 (expression -> MINUS expression .)
+    RPAREN          reduce using rule 18 (expression -> MINUS expression .)
+    EQUAL           reduce using rule 18 (expression -> MINUS expression .)
+    NOTEQ           reduce using rule 18 (expression -> MINUS expression .)
+    LARGE           reduce using rule 18 (expression -> MINUS expression .)
+    SMALL           reduce using rule 18 (expression -> MINUS expression .)
+    LRGEQ           reduce using rule 18 (expression -> MINUS expression .)
+    SMLEQ           reduce using rule 18 (expression -> MINUS expression .)
+    ELSE            reduce using rule 18 (expression -> MINUS expression .)
+
+  ! PLUS            [ shift and go to state 13 ]
+  ! MINUS           [ shift and go to state 14 ]
+  ! TIMES           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! MODULO          [ shift and go to state 17 ]
+
+
+state 20
+
+    (1) statement -> IF LPAREN comparison . RPAREN NAME EQUALS expression
+    (2) statement -> IF LPAREN comparison . RPAREN NAME EQUALS expression ELSE NAME EQUALS expression
+
+    RPAREN          shift and go to state 30
+
+
+state 21
+
+    (7) comparison -> expression . EQUAL expression
+    (8) comparison -> expression . NOTEQ expression
+    (9) comparison -> expression . LARGE expression
+    (10) comparison -> expression . SMALL expression
+    (11) comparison -> expression . LRGEQ expression
+    (12) comparison -> expression . SMLEQ expression
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    EQUAL           shift and go to state 31
+    NOTEQ           shift and go to state 32
+    LARGE           shift and go to state 33
+    SMALL           shift and go to state 34
+    LRGEQ           shift and go to state 35
+    SMLEQ           shift and go to state 36
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+
+state 22
+
+    (19) expression -> LPAREN expression RPAREN .
+
+    PLUS            reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    MODULO          reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    $end            reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    EQUAL           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    NOTEQ           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    LARGE           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    SMALL           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    LRGEQ           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    SMLEQ           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+    ELSE            reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+
+
+state 23
+
+    (5) statement -> NAME EQUALS expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    $end            reduce using rule 5 (statement -> NAME EQUALS expression .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+
+state 24
+
+    (13) expression -> expression PLUS expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    PLUS            reduce using rule 13 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 13 (expression -> expression PLUS expression .)
+    $end            reduce using rule 13 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 13 (expression -> expression PLUS expression .)
+    EQUAL           reduce using rule 13 (expression -> expression PLUS expression .)
+    NOTEQ           reduce using rule 13 (expression -> expression PLUS expression .)
+    LARGE           reduce using rule 13 (expression -> expression PLUS expression .)
+    SMALL           reduce using rule 13 (expression -> expression PLUS expression .)
+    LRGEQ           reduce using rule 13 (expression -> expression PLUS expression .)
+    SMLEQ           reduce using rule 13 (expression -> expression PLUS expression .)
+    ELSE            reduce using rule 13 (expression -> expression PLUS expression .)
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+  ! TIMES           [ reduce using rule 13 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 13 (expression -> expression PLUS expression .) ]
+  ! MODULO          [ reduce using rule 13 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 13 ]
+  ! MINUS           [ shift and go to state 14 ]
+
+
+state 25
+
+    (14) expression -> expression MINUS expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    PLUS            reduce using rule 14 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 14 (expression -> expression MINUS expression .)
+    $end            reduce using rule 14 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 14 (expression -> expression MINUS expression .)
+    EQUAL           reduce using rule 14 (expression -> expression MINUS expression .)
+    NOTEQ           reduce using rule 14 (expression -> expression MINUS expression .)
+    LARGE           reduce using rule 14 (expression -> expression MINUS expression .)
+    SMALL           reduce using rule 14 (expression -> expression MINUS expression .)
+    LRGEQ           reduce using rule 14 (expression -> expression MINUS expression .)
+    SMLEQ           reduce using rule 14 (expression -> expression MINUS expression .)
+    ELSE            reduce using rule 14 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+  ! TIMES           [ reduce using rule 14 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 14 (expression -> expression MINUS expression .) ]
+  ! MODULO          [ reduce using rule 14 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 13 ]
+  ! MINUS           [ shift and go to state 14 ]
+
+
+state 26
+
+    (15) expression -> expression TIMES expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    PLUS            reduce using rule 15 (expression -> expression TIMES expression .)
+    MINUS           reduce using rule 15 (expression -> expression TIMES expression .)
+    TIMES           reduce using rule 15 (expression -> expression TIMES expression .)
+    DIVIDE          reduce using rule 15 (expression -> expression TIMES expression .)
+    MODULO          reduce using rule 15 (expression -> expression TIMES expression .)
+    $end            reduce using rule 15 (expression -> expression TIMES expression .)
+    RPAREN          reduce using rule 15 (expression -> expression TIMES expression .)
+    EQUAL           reduce using rule 15 (expression -> expression TIMES expression .)
+    NOTEQ           reduce using rule 15 (expression -> expression TIMES expression .)
+    LARGE           reduce using rule 15 (expression -> expression TIMES expression .)
+    SMALL           reduce using rule 15 (expression -> expression TIMES expression .)
+    LRGEQ           reduce using rule 15 (expression -> expression TIMES expression .)
+    SMLEQ           reduce using rule 15 (expression -> expression TIMES expression .)
+    ELSE            reduce using rule 15 (expression -> expression TIMES expression .)
+
+  ! PLUS            [ shift and go to state 13 ]
+  ! MINUS           [ shift and go to state 14 ]
+  ! TIMES           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! MODULO          [ shift and go to state 17 ]
+
+
+state 27
+
+    (16) expression -> expression DIVIDE expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    PLUS            reduce using rule 16 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 16 (expression -> expression DIVIDE expression .)
+    TIMES           reduce using rule 16 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 16 (expression -> expression DIVIDE expression .)
+    MODULO          reduce using rule 16 (expression -> expression DIVIDE expression .)
+    $end            reduce using rule 16 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 16 (expression -> expression DIVIDE expression .)
+    EQUAL           reduce using rule 16 (expression -> expression DIVIDE expression .)
+    NOTEQ           reduce using rule 16 (expression -> expression DIVIDE expression .)
+    LARGE           reduce using rule 16 (expression -> expression DIVIDE expression .)
+    SMALL           reduce using rule 16 (expression -> expression DIVIDE expression .)
+    LRGEQ           reduce using rule 16 (expression -> expression DIVIDE expression .)
+    SMLEQ           reduce using rule 16 (expression -> expression DIVIDE expression .)
+    ELSE            reduce using rule 16 (expression -> expression DIVIDE expression .)
+
+  ! PLUS            [ shift and go to state 13 ]
+  ! MINUS           [ shift and go to state 14 ]
+  ! TIMES           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! MODULO          [ shift and go to state 17 ]
+
+
+state 28
+
+    (17) expression -> expression MODULO expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    PLUS            reduce using rule 17 (expression -> expression MODULO expression .)
+    MINUS           reduce using rule 17 (expression -> expression MODULO expression .)
+    TIMES           reduce using rule 17 (expression -> expression MODULO expression .)
+    DIVIDE          reduce using rule 17 (expression -> expression MODULO expression .)
+    MODULO          reduce using rule 17 (expression -> expression MODULO expression .)
+    $end            reduce using rule 17 (expression -> expression MODULO expression .)
+    RPAREN          reduce using rule 17 (expression -> expression MODULO expression .)
+    EQUAL           reduce using rule 17 (expression -> expression MODULO expression .)
+    NOTEQ           reduce using rule 17 (expression -> expression MODULO expression .)
+    LARGE           reduce using rule 17 (expression -> expression MODULO expression .)
+    SMALL           reduce using rule 17 (expression -> expression MODULO expression .)
+    LRGEQ           reduce using rule 17 (expression -> expression MODULO expression .)
+    SMLEQ           reduce using rule 17 (expression -> expression MODULO expression .)
+    ELSE            reduce using rule 17 (expression -> expression MODULO expression .)
+
+  ! PLUS            [ shift and go to state 13 ]
+  ! MINUS           [ shift and go to state 14 ]
+  ! TIMES           [ shift and go to state 15 ]
+  ! DIVIDE          [ shift and go to state 16 ]
+  ! MODULO          [ shift and go to state 17 ]
+
+
+state 29
+
+    (3) statement -> FOR NAME EQUALS . NUMBER TO NUMBER PLUS
+    (4) statement -> FOR NAME EQUALS . NUMBER TO NUMBER TIMES
+
+    NUMBER          shift and go to state 37
+
+
+state 30
+
+    (1) statement -> IF LPAREN comparison RPAREN . NAME EQUALS expression
+    (2) statement -> IF LPAREN comparison RPAREN . NAME EQUALS expression ELSE NAME EQUALS expression
+
+    NAME            shift and go to state 38
+
+
+state 31
+
+    (7) comparison -> expression EQUAL . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 39
+
+state 32
+
+    (8) comparison -> expression NOTEQ . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 40
+
+state 33
+
+    (9) comparison -> expression LARGE . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 41
+
+state 34
+
+    (10) comparison -> expression SMALL . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 42
+
+state 35
+
+    (11) comparison -> expression LRGEQ . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 43
+
+state 36
+
+    (12) comparison -> expression SMLEQ . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 44
+
+state 37
+
+    (3) statement -> FOR NAME EQUALS NUMBER . TO NUMBER PLUS
+    (4) statement -> FOR NAME EQUALS NUMBER . TO NUMBER TIMES
+
+    TO              shift and go to state 45
+
+
+state 38
+
+    (1) statement -> IF LPAREN comparison RPAREN NAME . EQUALS expression
+    (2) statement -> IF LPAREN comparison RPAREN NAME . EQUALS expression ELSE NAME EQUALS expression
+
+    EQUALS          shift and go to state 46
+
+
+state 39
+
+    (7) comparison -> expression EQUAL expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    RPAREN          reduce using rule 7 (comparison -> expression EQUAL expression .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+
+state 40
+
+    (8) comparison -> expression NOTEQ expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    RPAREN          reduce using rule 8 (comparison -> expression NOTEQ expression .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+
+state 41
+
+    (9) comparison -> expression LARGE expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    RPAREN          reduce using rule 9 (comparison -> expression LARGE expression .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+
+state 42
+
+    (10) comparison -> expression SMALL expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    RPAREN          reduce using rule 10 (comparison -> expression SMALL expression .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+
+state 43
+
+    (11) comparison -> expression LRGEQ expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    RPAREN          reduce using rule 11 (comparison -> expression LRGEQ expression .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+
+state 44
+
+    (12) comparison -> expression SMLEQ expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    RPAREN          reduce using rule 12 (comparison -> expression SMLEQ expression .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+
+state 45
+
+    (3) statement -> FOR NAME EQUALS NUMBER TO . NUMBER PLUS
+    (4) statement -> FOR NAME EQUALS NUMBER TO . NUMBER TIMES
+
+    NUMBER          shift and go to state 47
+
+
+state 46
+
+    (1) statement -> IF LPAREN comparison RPAREN NAME EQUALS . expression
+    (2) statement -> IF LPAREN comparison RPAREN NAME EQUALS . expression ELSE NAME EQUALS expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 48
+
+state 47
+
+    (3) statement -> FOR NAME EQUALS NUMBER TO NUMBER . PLUS
+    (4) statement -> FOR NAME EQUALS NUMBER TO NUMBER . TIMES
+
+    PLUS            shift and go to state 49
+    TIMES           shift and go to state 50
+
+
+state 48
+
+    (1) statement -> IF LPAREN comparison RPAREN NAME EQUALS expression .
+    (2) statement -> IF LPAREN comparison RPAREN NAME EQUALS expression . ELSE NAME EQUALS expression
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    $end            reduce using rule 1 (statement -> IF LPAREN comparison RPAREN NAME EQUALS expression .)
+    ELSE            shift and go to state 51
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
+
+state 49
+
+    (3) statement -> FOR NAME EQUALS NUMBER TO NUMBER PLUS .
+
+    $end            reduce using rule 3 (statement -> FOR NAME EQUALS NUMBER TO NUMBER PLUS .)
+
+
+state 50
+
+    (4) statement -> FOR NAME EQUALS NUMBER TO NUMBER TIMES .
+
+    $end            reduce using rule 4 (statement -> FOR NAME EQUALS NUMBER TO NUMBER TIMES .)
+
+
+state 51
+
+    (2) statement -> IF LPAREN comparison RPAREN NAME EQUALS expression ELSE . NAME EQUALS expression
+
+    NAME            shift and go to state 52
+
+
+state 52
+
+    (2) statement -> IF LPAREN comparison RPAREN NAME EQUALS expression ELSE NAME . EQUALS expression
+
+    EQUALS          shift and go to state 53
+
+
+state 53
+
+    (2) statement -> IF LPAREN comparison RPAREN NAME EQUALS expression ELSE NAME EQUALS . expression
+    (13) expression -> . expression PLUS expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression TIMES expression
+    (16) expression -> . expression DIVIDE expression
+    (17) expression -> . expression MODULO expression
+    (18) expression -> . MINUS expression
+    (19) expression -> . LPAREN expression RPAREN
+    (20) expression -> . NUMBER
+    (21) expression -> . NAME
+
+    MINUS           shift and go to state 8
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 7
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 54
+
+state 54
+
+    (2) statement -> IF LPAREN comparison RPAREN NAME EQUALS expression ELSE NAME EQUALS expression .
+    (13) expression -> expression . PLUS expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . TIMES expression
+    (16) expression -> expression . DIVIDE expression
+    (17) expression -> expression . MODULO expression
+
+    $end            reduce using rule 2 (statement -> IF LPAREN comparison RPAREN NAME EQUALS expression ELSE NAME EQUALS expression .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    TIMES           shift and go to state 15
+    DIVIDE          shift and go to state 16
+    MODULO          shift and go to state 17
+
