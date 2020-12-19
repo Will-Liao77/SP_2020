@@ -8,15 +8,13 @@
 
 ```diff
  冪次運算：num '^' num 
- e.g.
+ e.g. 2^3
 ``` 
 
-![image](https://raw.githubusercontent.com/huikaiwang/SP_2020/main/截圖%202020-12-19%20下午5.38.06.png)
-
-根號運算：num '**' num
-
-e.g.
-
+```diff
+ 根號運算：num '**' num
+ e.g. 4**2
+``` 
 ![image](https://raw.githubusercontent.com/huikaiwang/SP_2020/main/截圖%202020-12-19%20下午5.38.29.png)
 
 for-loop：for 起始值 to 結束 ("欲執行的指令運算") 
