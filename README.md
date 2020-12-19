@@ -1,4 +1,8 @@
 # SP_2020
+```diff
++ this will be highlighted in green
+- this will be highlighted in red
+```
 
 System Programming 1091 Final hw
 
