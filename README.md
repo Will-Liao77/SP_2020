@@ -1,7 +1,6 @@
-# SP_2020
 ```diff
-+ this will be highlighted in green
-- this will be highlighted in red
++ #System Programming 1091 Final hw
+- #欲執行PLY請輸入：python mylex.py
 ```
 
 System Programming 1091 Final hw
