@@ -4,11 +4,12 @@
  欲執行PLY請輸入：python mylex.py
 ```
 
-語法：
+#語法：
 
-冪次運算：num '^' num 
-
-e.g.
+```diff
+ 冪次運算：num '^' num 
+ e.g.
+``` 
 
 ![image](https://raw.githubusercontent.com/huikaiwang/SP_2020/main/截圖%202020-12-19%20下午5.38.06.png)
 
