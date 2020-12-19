@@ -8,7 +8,7 @@ reserved = {
     'if' : 'IF',
     'else' : 'ELSE',
     'for' : 'FOR',
-    'to' : 'TO'
+    'to' : 'TO',
 }
 
 # List of possible token namesthat can be produced by the lexer
@@ -121,20 +121,38 @@ def p_statement_if(p):
 
 
 def p_statement_for(p):
-    '''statement    : FOR NAME EQUALS NUMBER TO NUMBER PLUS
-                    | FOR NAME EQUALS NUMBER TO NUMBER TIMES'''
-    i=p[2]
-    num1=p[4]
-    num2=p[6]
-    if(p[7]=='+'):
-        total = 0
-        for i in range(num1,num2+1):
-            total+=i
-    elif(p[7]=='*'):
-        total = 1
-        for i in range(num1,num2+1):
-            total=total*i      
-    names[p[2]]=total
+    '''statement : FOR NUMBER TO NUMBER LPAREN NAME EQUALS expression PLUS expression RPAREN
+                 | FOR NUMBER TO NUMBER LPAREN NAME EQUALS expression MINUS expression RPAREN
+                 | FOR NUMBER TO NUMBER LPAREN NAME EQUALS expression TIMES expression RPAREN
+                 | FOR NUMBER TO NUMBER LPAREN NAME EQUALS expression DIVIDE expression RPAREN
+                 | FOR NUMBER TO NUMBER LPAREN NAME EQUALS expression POWER expression RPAREN
+                 | FOR NUMBER TO NUMBER LPAREN NAME EQUALS expression SQUARE expression RPAREN'''
+
+    t1 = p[8]
+    t2 = p[10]
+    sum=0
+
+    for i in range(p[2],p[4]+1):
+       if p[9]=='+':
+          sum = t1 + t2
+          t1 = sum 
+       elif p[9]=='-':
+          sum = t1 - t2
+          t1 = sum
+       elif p[9]=='*':
+          sum = t1 * t2
+          t1 = sum
+       elif p[9]=='/':
+          sum = t1 / t2
+          t1 = sum
+       elif p[9]=='^':
+          sum = t1 ** t2
+          t1 = sum
+       elif p[9]=='**':
+          sum = t1 ** (1/t2)
+          t1 = sum
+
+    names[p[6]] = t1
 
 
 # assignment statement: <statement> -> NAME = <expression>
