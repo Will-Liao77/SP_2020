@@ -1,11 +1,9 @@
+# System Programming 1091 Final hw
+
 ```diff
-+ #System Programming 1091 Final hw
-- #欲執行PLY請輸入：python mylex.py
++ 
+- 欲執行PLY請輸入：python mylex.py
 ```
-
-System Programming 1091 Final hw
-
-欲執行PLY請輸入：python mylex.py
 
 語法：
 
