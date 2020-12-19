@@ -20,7 +20,7 @@ e.g. calc > 4**2
 for-loop：for 起始值 to 結束 ("欲執行的指令運算")
 e.g.
 ``` 
-![image](https://raw.githubusercontent.com/huikaiwang/SP_2020/main/截圖%202020-12-19%20下午5.39.00.png)
+![image](https://github.com/huikaiwang/SP_2020/blob/main/img/截圖%202020-12-19%20下午5.39.00.png?raw=true)
 
 ```diff
 if-else運算：if ("條件判斷") "expression" else "expression"
