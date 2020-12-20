@@ -7,17 +7,20 @@
 # 語法：
 * 冪次運算： base  ^  n
 ```diff
-calc > 2^3 
+ calc > 2^3 
 ```
-#### 根號運算： num  **  n
+* 根號運算： num  **  n
 ```diff
 calc > 4**2 
 ```
-#### 迴圈控制： for 起始值 to 結束 ("欲執行的指令運算")
+* 迴圈控制： for 起始值 to 結束 ("欲執行的指令運算")
 ```diff
 e.g.
+ calc > i=0
+ calc > for 1 to 3 (i=i+2)
+ calc > i
+ 6
 ``` 
-![image](https://github.com/huikaiwang/SP_2020/blob/main/img/截圖%202020-12-19%20下午5.39.00.png?raw=true)
 
 ```diff
 if-else運算：if ("條件判斷") "expression" else "expression" 
