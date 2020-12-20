@@ -7,8 +7,7 @@
 # 語法：
 ```diff
 冪次運算：num '^' num 
-e.g. calc > 2^3
-```
+e.g. calc > 2^3```
 ```diff
 根號運算：num '**' num
 e.g. calc > 4**2
