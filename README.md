@@ -5,14 +5,13 @@
 ```
 
 # 語法：
-### 冪次運算： num '^' num
+#### 冪次運算： base '^' n
 ```diff
 calc > 2^3 
 ```
-
+#### 根號運算： num '**' n
 ```diff
-根號運算：num '**' num
-e.g. calc > 4**2 
+calc > 4**2 
 ```
 
 ```diff
