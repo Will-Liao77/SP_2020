@@ -36,6 +36,6 @@ e.g.
 
 ```diff
 最後在原.py檔下的資料夾內會多一份.png檔，依據上述所建立的一棵Parsing Tree
+如下
 ``` 
-![image](https://github.com/huikaiwang/SP_2020/blob/main/img/截圖%202020-12-20%20下午4.40.37.png)為
-![image](https://github.com/huikaiwang/SP_2020/blob/main/img/截圖%202020-12-20%20下午4.40.37.png)
+![image](https://github.com/huikaiwang/SP_2020/blob/main/img/nx_test.png)
