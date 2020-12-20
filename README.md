@@ -1,4 +1,4 @@
-# System Programming 1091 Final repo (包含第八次作業） 
+# System Programming 1091 Final repo 
 
 ```diff
 - 欲執行PLY請輸入：python mylex.py 
