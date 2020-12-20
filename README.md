@@ -27,8 +27,20 @@ calc > if (i<0) i=1 else i=2
 calc > i
 2
 ``` 
-* 若輸入四則運算，則會把Three-Address Code一一列出
-![image](https://github.com/huikaiwang/SP_2020/blob/main/img/截圖%202020-12-20%20下午4.40.37.png)
-
-* 最後在原.py檔的資料夾內會多一份.png檔，為依據上述所建立的一棵Parsing Tree
+* 若輸入四則運算，則會依序列出：(1)lex輸出 (2)執行結果 (3)Three-Address Code
+```diff
+calc > 2*3-6/2^2
+LexToken(NUMBER,2,1,0)
+LexToken(TIMES,'*',1,1)
+LexToken(NUMBER,3,1,2)
+LexToken(MINUS,'-',1,3)
+LexToken(NUMBER,6,1,4)
+LexToken(DIVIDE,'/',1,5)
+LexToken(NUMBER,2,1,6)
+LexToken(POWER,'^',1,7)
+LexToken(NUMBER,2,1,8)
+4.5
+[['op', 'arg1', 'arg2', 'result'], ['^', '2', '2', 't1'], ['/', '6', 't1', 't2'], ['*', '2', '3', 't3'], ['-', 't3', 't2', 't4'], ['=', 't4', ' ', 'a']]
+``` 
+* 最後資料夾內會產生一份.png檔，為依據上述所建立的一棵Parsing Tree
 ![image](https://github.com/huikaiwang/SP_2020/blob/main/img/nx_test.png)
