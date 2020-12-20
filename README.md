@@ -8,10 +8,12 @@
 * 冪次運算： base  ^  n
 ```diff
 calc > 2^3 
+8
 ```
 * 根號運算： num  **  n
 ```diff
 calc > 4**2 
+2.0
 ```
 * for-loop： for 起始值 to 結束 ("欲執行的指令運算")
 ```diff
