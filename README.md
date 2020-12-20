@@ -44,5 +44,5 @@ LexToken(NUMBER,2,1,8)
 4.5
 [['op', 'arg1', 'arg2', 'result'], ['^', '2', '2', 't1'], ['/', '6', 't1', 't2'], ['*', '2', '3', 't3'], ['-', 't3', 't2', 't4'], ['=', 't4', ' ', 'a']]
 ``` 
-* 最後資料夾內會產生一份.png檔，為依據上述所建立的一棵 (4)Parsing Tree若Node中出現相同Label則以L_及R_加以辨別
+* 最後資料夾內會產生一份.png檔，為依據上述所建立的一棵 (4)Parsing Tree </br> 若Node中出現相同Label則以L_及R_加以辨別
 ![image](https://github.com/huikaiwang/SP_2020/blob/main/img/nx_test.png)
