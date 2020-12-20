@@ -86,8 +86,6 @@ lex.lex()
 # 3. Binary, left-associative addition and subtraction
 # Parenthesis precedence defined through the grammar
 precedence = (
-    ('if','IF'),
-    ('left', 'ELSE'),
     ('left', 'PLUS', 'MINUS'),
     ('left', 'TIMES', 'DIVIDE', 'MODULO'),
     ('right', 'UMINUS','POWER','SQUARE'),
