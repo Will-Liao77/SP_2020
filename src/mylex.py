@@ -253,10 +253,6 @@ def p_error(p):
     print("Syntax error at '%s'" % p.value)
 
 
-# build parser
-yacc.yacc()
-
-
 # TAC 
 def find_top_prio(lst):
     top_prio = 1
@@ -270,19 +266,33 @@ def find_top_prio(lst):
     return top_prio, count_ops
 
 
+# build parser
+yacc.yacc()
+
+lexer = lex.lex()
+
 
 # start interpreter and accept input using commandline/console
 while True:
     try:
         s = input('calc > ')  # get user input. use raw_input() on Python 2
+
+        lexer.input(s)
+        while True:
+           tok = lexer.token()
+           if not tok:
+              break
+           print(tok)
+
         ip_str = s
         ip_lst = list(map(str,ip_str))
+
     except EOFError:
         break
 
     yacc.parse(s)  # parse user input string
     
-    
+    # TAC    
     prio_dict = {'-':1,'+':2,'*':3,'/':4,'**':5,'^':6}
     op_lst = []
     op_lst.append(['op','arg1','arg2','result'])
@@ -290,6 +300,7 @@ while True:
     top_prio, count_ops = find_top_prio(ip_lst)
     ip = ip_lst
     i, res = 0, 0
+
     while i in range(len(ip)):
       if ip[i] in prio_dict:
         op = ip[i]
@@ -311,7 +322,8 @@ while True:
       if len(ip) == 1:
         op_lst.append(['=',ip[i],' ','a'])
         print(op_lst)
- 
+        
+        # networkx
         G = nx.DiGraph()
         G.clear()
         data = op_lst
@@ -334,6 +346,7 @@ while True:
 
         plt.savefig('nx_test.png')
         plt.clf()
+
       i += 1
     
 
