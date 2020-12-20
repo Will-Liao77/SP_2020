@@ -5,17 +5,14 @@
 ```
 
 # 語法：
-
 ```diff
-+ 冪次運算：num '^' num 
-  e.g. calc > 2^3
+冪次運算：num '^' num 
+e.g. calc > 2^3
 ```
-
 ```diff
-+ 根號運算：num '**' num
-  e.g. calc > 4**2
+根號運算：num '**' num
+e.g. calc > 4**2
 ``` 
-
 ```diff
 for-loop：for 起始值 to 結束 ("欲執行的指令運算")
 e.g.
