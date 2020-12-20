@@ -9,7 +9,7 @@
 ```diff
 冪次運算：num '^' num 
 e.g. calc > 2^3
-``` 
+``` ![image](https://github.com/huikaiwang/SP_2020/blob/main/img/截圖%202020-12-19%20下午5.39.00.png?raw=true)
 
 ```diff
 根號運算：num '**' num
