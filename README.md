@@ -1,4 +1,21 @@
-# System Programming 1091 Final hw
+# System Programming 1091 Final repo (包含第八次作業） 
+
+
+-.>*
+
+• 4AC
+
+(1):3((2)LexC
+
+(3)Parsing Tree(4)Three-Address Code
+
+-.>*
+
+• 4AC
+
+(1):3((2)LexC
+
+(3)Parsing Tree(4)Three-Address Code
 
 ```diff
 - 欲執行PLY請輸入：python mylex.py 
